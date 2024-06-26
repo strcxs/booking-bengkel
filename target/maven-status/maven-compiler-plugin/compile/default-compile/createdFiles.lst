@@ -6,6 +6,7 @@ com\bengkel\booking\services\MenuService.class
 com\bengkel\booking\repositories\CustomerRepository.class
 com\bengkel\booking\App.class
 com\bengkel\booking\interfaces\IBengkelPayment.class
+com\bengkel\booking\repositories\BookingOrderRepo.class
 com\bengkel\booking\models\BookingOrder.class
 com\bengkel\booking\interfaces\IPayment.class
 com\bengkel\booking\repositories\ItemServiceRepository.class

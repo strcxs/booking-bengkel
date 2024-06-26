@@ -1,7 +1,9 @@
 package com.bengkel.booking.services;
 
+import java.security.Provider.Service;
 import java.util.List;
 
+import com.bengkel.booking.models.BookingOrder;
 import com.bengkel.booking.models.Car;
 import com.bengkel.booking.models.ItemService;
 import com.bengkel.booking.models.Vehicle;
@@ -61,7 +63,29 @@ public class PrintService {
 	    System.out.printf(line);
 	    System.out.format("| %-2s | %-73s |\n", "0", "Kembali Ke Home Menu");
 	    System.out.printf(line);
-		
+	}
+	public static String printServiceList(List<ItemService> itemServices){
+		String result = "";
+        // Bisa disesuaikan kembali
+        for (ItemService itemService : itemServices) {
+            result += itemService.getServiceName() + ", ";
+        }
+        return result;
+	}
 
+	public static void printBookingMenu(List<BookingOrder> bookingOrders){
+		String formatTable = "| %-2s | %-15s | %-15s | %-19s | %-15s | %-15s | %-28s |%n";
+		String line = "+----+-----------------+-----------------+---------------------+----------------+-------------------------------------------------+%n";
+		System.out.format(line);
+	    System.out.format(formatTable, "No", "Booking Id", "Nama Customer", "Payment Method", "Total Service","Total Payment","List Service");
+	    System.out.format(line);
+	    int number = 1;
+	    for (BookingOrder bookingOrder : bookingOrders) {
+	    	System.out.format(formatTable, number, bookingOrder.getBookingId(), bookingOrder.getCustomer().getName(), bookingOrder.getPaymentMethod(), bookingOrder.getTotalServicePrice(),bookingOrder.getTotalPayment(),printServiceList(bookingOrder.getServices()));
+	    	number++;
+	    }
+	    System.out.printf(line);
+	    System.out.format("| %-2s | %-122s |\n", "0", "Kembali Ke Home Menu");
+	    System.out.printf(line);
 	}
 }
